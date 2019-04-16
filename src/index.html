@@ -4,15 +4,14 @@
 </head>
 <body>    
 <h2>Load Angular JS directive in Angular 7</h2>
-<p>The effective way to upgrade an angular JS directive in Angular new version. <br/>What is mostly undocumented is the need of downgrade the host component.</p>
+<p>The effective way to upgrade an angular JS directive in Angular new version. <br/>What is mostly undocumented is the need to downgrade the host component in angularJS module.</p>
 <pre>
-  angular.module('angularJSModule', []).
-      directive('angularJSDirective', function(){ return {
-      template: `
-        I'm an AngularJs directive!
-      `
-      }}).
-      <span style="background:yellow">directive('myApp', downgradeComponent({component: AppComponent}))</span>;
+angular.module('angularJSModule', [])
+  .directive('angularJSDirective', function(){ return {
+      template: 'I'm an AngularJs directive!'
+      }
+  })<span style="background:yellow">
+  .directive('myApp', downgradeComponent({component: AppComponent}))</span>;
 </pre>  
 
 <my-app>loading</my-app>
